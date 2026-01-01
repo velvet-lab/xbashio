@@ -98,6 +98,8 @@ function xbashio::log.log() {
     local timestamp
     local output
 
+    xbashio::log.init
+
     if [[ "${level}" -gt "${__XBASHIO_LOG_LEVEL}" ]]; then
         return "${__XBASHIO_EXIT_OK}"
     fi
@@ -245,4 +247,22 @@ function xbashio::log.level() {
     esac
 
     export __XBASHIO_LOG_LEVEL="${log_level}"
+
+    file="${__XBASHIO_DEFAULT_ETC_DIR}/logging"
+    if [ -f "${file}" ]; then
+        sed -i "s/__XBASHIO_LOG_LEVEL=.*/__XBASHIO_LOG_LEVEL=${log_level}/" "${file}"
+    fi
+
+    return "${__XBASHIO_EXIT_OK}"
+}
+
+# ------------------------------------------------------------------------------
+# Inits the logging system
+#
+# ------------------------------------------------------------------------------
+function xbashio::log.init() {
+
+    if [ -f "${__XBASHIO_DEFAULT_ETC_DIR}/logging" ]; then
+        source "${__XBASHIO_DEFAULT_ETC_DIR}/logging"
+    fi
 }

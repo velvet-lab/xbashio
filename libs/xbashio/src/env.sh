@@ -41,6 +41,10 @@ xbashio::env.export() {
     return "${__XBASHIO_EXIT_OK}"
 }
 
+# ------------------------------------------------------------------------------
+# Exports all variables for bash and zsh
+#
+# ------------------------------------------------------------------------------
 xbashio::env.configure() {
     xbashio::log.trace "${FUNCNAME[0]}:"
 

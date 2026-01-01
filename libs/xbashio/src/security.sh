@@ -307,7 +307,7 @@ EOF
 }
 
 # ------------------------------------------------------------------------------
-# Remove Grabage Files
+# Remove Garbage Files
 #
 # ------------------------------------------------------------------------------
 xbashio::security.clean(){
@@ -320,6 +320,10 @@ xbashio::security.clean(){
     rm -f /root/.xbashio_security || true
 }
 
+# ------------------------------------------------------------------------------
+# Update root certificates
+#
+# ------------------------------------------------------------------------------
 xbashio::security.updateCA(){
 
     xbashio::log.trace "${FUNCNAME[0]}:"

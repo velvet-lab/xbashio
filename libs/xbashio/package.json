@@ -8,8 +8,8 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/home-assistant/xbashio.git"
+        "url": "git+https://github.com/velvet-lab/xbashio.git"
     },
     "author": "",
-    "license": "MIT",
+    "license": "MIT"
 }

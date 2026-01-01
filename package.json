@@ -7,9 +7,8 @@
     "build": "npm run build:clean && npm run build:copy && npm run build:package",
     "build:clean": "rimraf ./dist/xbashio",
     "build:copy": "make-dir ./dist/xbashio && cpy ./libs/xbashio/src/* ./dist/xbashio",
-    "build:package": "npm-build-zip --source ./dist/xbashio/ --destination ./dist/ --name=xbashio --name_only=true",
-    "github:fix": "dot-json package.json repository.url git+https://github.com/danlorb/xbashio.git && dot-json package.json bugs.url https://github.com/danlorb/xbashio/issues",
-    "gitea:fix": "dot-json package.json repository.url git+https://git.x-breitschaft.de/global/xbashio.git && dot-json package.json bugs.url https://git.x-breitschaft.de/global/xbashio/issues"
+    "build:package": "npm-build-zip --source ./dist/xbashio/ --destination ./dist/ --name=xbashio --name_only=true"
+
   },
   "repository": {
     "type": "git",

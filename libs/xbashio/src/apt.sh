@@ -78,7 +78,7 @@ xbashio::apt.remove() {
 #
 # ------------------------------------------------------------------------------
 xbashio::apt.prepare() {
-    local packages="sudo nano apt-transport-https openssh-server openssl"
+    local packages="sudo nano apt-transport-https openssl dos2unix"
 
     xbashio::log.trace "${FUNCNAME[0]}:" "$@"
 
@@ -86,8 +86,7 @@ xbashio::apt.prepare() {
 
     export DEBIAN_FRONTEND=noninteractive
 
-    xbashio::apt.upgrade
-
+    xbashio::apt.update
     # shellcheck disable=SC2086
     apt-get install -qy --no-install-recommends ${packages} || xbashio::exit.nok "System could not prepared"
     return "${__XBASHIO_EXIT_OK}"
@@ -105,12 +104,15 @@ xbashio::apt.clean() {
 
     export DEBIAN_FRONTEND=noninteractive
 
-    (apt-get clean \
-        && apt-get autoremove \
-        && rm -rf \
-            /var/lib/apt/lists/* \
-            /var/cache/apt/archives/partial/* \
-            /root/.cache) \
+    # see https://askubuntu.com/questions/1433449/how-to-unlock-var-cache-apt-archives-lock
+    (apt-get autoremove -qy \
+        && apt-get clean -qy \
+        && rm -f /var/lib/apt/lists/lock || true \
+        && rm -f /var/cache/apt/archives/lock || true \
+        && rm -f /var/lib/dpkg/lock || true \
+        && rm -rf /var/lib/apt/lists/* \
+        && rm -rf /var/cache/apt/archives/partial/* \
+        && rm -rf /root/.cache) \
          || xbashio::exit.nok "System could not cleaned"
 
     return "${__XBASHIO_EXIT_OK}"
