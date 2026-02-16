@@ -1,5 +1,6 @@
 #!/usr/bin/env xbashio
 # -*- coding: utf-8 -*-
+# shellcheck shell=bash
 
 user="support"
 

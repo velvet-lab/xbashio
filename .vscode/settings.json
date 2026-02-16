@@ -1,5 +1,10 @@
 {
-    "shellcheck.customArgs": [
-        "--external-sources"
-    ]
+  "shellcheck.customArgs": ["--external-sources"],
+  "sonarlint.connectedMode.connections.sonarcloud": [
+    {
+      "organizationKey": "velvet-lab",
+      "connectionId": "velvet-lab",
+      "region": "EU"
+    }
+  ]
 }

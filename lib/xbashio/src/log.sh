@@ -263,6 +263,7 @@ function xbashio::log.level() {
 function xbashio::log.init() {
 
     if [ -f "${__XBASHIO_DEFAULT_ETC_DIR}/logging" ]; then
+        # shellcheck disable=SC1091
         source "${__XBASHIO_DEFAULT_ETC_DIR}/logging"
     fi
 }

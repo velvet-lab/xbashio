@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# -*- coding: utf-8 -*-
 
 # ------------------------------------------------------------------------------
 # Check whether or not a directory exists.
