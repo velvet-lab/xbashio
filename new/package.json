@@ -1,0 +1,11 @@
+{
+    "scripts": {
+        "install:helpers": "git submodule add https://github.com/bats-core/bats-support.git test/test_helper/bats-support && git submodule add https://github.com/bats-core/bats-assert.git test/test_helper/bats-assert",
+        "test": "bats test/"
+    },
+    "devDependencies": {
+        "bats": "^1.13.0",
+        "bats-assert": "^2.2.4",
+        "bats-support": "^0.3"
+    }
+}
