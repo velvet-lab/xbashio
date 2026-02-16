@@ -1,49 +1,22 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
 {
-    "name": "xBashIO",
-    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-    "image": "registry.x-breitschaft.de/devcontainers/base:ubuntu",
+    "name": "xbashio",
+    "image": "artifactory.datev.de/docker-mcr-proxy/devcontainers/base:ubuntu",
     // Features to add to the dev container. More info: https://containers.dev/features.
-    "features": {
-        "ghcr.io/devcontainers/features/common-utils:2": {},
-        "ghcr.io/eitsupi/devcontainer-features/jq-likes:2.1.1": {},
-        "ghcr.io/lukewiwa/features/shellcheck:0": {},
-        "ghcr.io/edouard-lopez/devcontainer-features/bats:0": {}
-    },
-    "runArgs": [
-        "--unserns=keep-id"
-    ],
+    // "features": {
+    //     "ghcr.io/devcontainers/features/common-utils:2": {},
+    //     "ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {},
+    //     "ghcr.io/devcontainers-extra/features/shellcheck:1": {},
+    //     "ghcr.io/szkiba/devcontainer-features/bats:1": {}
+    // },
+    // "runArgs": [
+    //     "--unserns=keep-id"
+    // ],
     "containerEnv": {
         "HOME": "/root"
     },
-    // Use 'forwardPorts' to make a list of ports inside the container available locally.
-    // "forwardPorts": [],
-    // Use 'postCreateCommand' to run commands after the container is created.
-    "postCreateCommand": "ln -s /workspaces/xbashio/src/xbashio /usr/lib/xbashio && ln -s /workspaces/xbashio/src/xbashio/xbashio /usr/bin/xbashio && chmod +x /workspaces/xbashio/src/xbashio/*",
-    // Configure tool-specific properties.
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "rogalmic.bash-debug",
-                "lizebang.bash-extension-pack",
-                "mads-hartmann.bash-ide-vscode",
-                "bat-snippets.bat-snippets",
-                "jetmartin.bats",
-                "xiaokangtu.codeheader",
-                "EditorConfig.EditorConfig",
-                "MS-CEINTL.vscode-language-pack-de",
-                "pomber.git-file-history",
-                "mhutchie.git-graph",
-                "ymotongpoo.licenser",
-                "DavidAnson.vscode-markdownlint",
-                "rpinski.shebang-snippets",
-                "foxundermoon.shell-format",
-                "timonwong.shellcheck",
-                "Remisa.shellman"
-            ]
-        }
-    },
+    "postCreateCommand": "${containerWorkspaceFolder}/.devcontainer/post-create.sh",
     // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
     "remoteUser": "root"
 }

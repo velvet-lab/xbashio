@@ -1,6 +1,4 @@
 {
-    "licenser.license": "MIT",
-    "licenser.projectName": "xbashio",
     "shellcheck.customArgs": [
         "--external-sources"
     ]
