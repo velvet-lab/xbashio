@@ -1,0 +1,50 @@
+name: "Copilot Setup Steps"
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+  pull_request:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+
+jobs:
+  # The job MUST be called `copilot-setup-steps` or it will not be picked up by Copilot.
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        working-directory: lib/xbashio
+        run: bun install
+
+      - name: Install shellcheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
+
+      - name: Run shellcheck on source files
+        run: |
+          echo "Running shellcheck on all shell scripts..."
+          find lib/xbashio/src -type f \( -name "*.sh" -o -name "*.bash" \) -exec shellcheck {} +
+          find demos -type f -name "*.sh" -exec shellcheck {} +
+
+      - name: Run Bats tests
+        working-directory: lib/xbashio
+        run: |
+          if [ -d "tests" ] && ls tests/*.bats 1> /dev/null 2>&1; then
+            echo "Running Bats tests..."
+            bun x bats tests/
+          else
+            echo "No Bats tests found, skipping..."
+          fi
