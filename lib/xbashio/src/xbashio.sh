@@ -46,28 +46,28 @@ source "${__XBASHIO_LIB_DIR}/fs.sh"
 source "${__XBASHIO_LIB_DIR}/log.sh"
 source "${__XBASHIO_LIB_DIR}/string.sh"
 source "${__XBASHIO_LIB_DIR}/exit.sh"
+source "${__XBASHIO_LIB_DIR}/env.sh"
 
 # ==============================================================================
 # Other Modules
 # ==============================================================================
-source "${__XBASHIO_LIB_DIR}/system.sh"
-source "${__XBASHIO_LIB_DIR}/apt.sh"
-source "${__XBASHIO_LIB_DIR}/security.sh"
+# source "${__XBASHIO_LIB_DIR}/system.sh"
+# source "${__XBASHIO_LIB_DIR}/apt.sh"
+# source "${__XBASHIO_LIB_DIR}/security.sh"
 # source "${__XBASHIO_LIB_DIR}/ssh.sh"
-source "${__XBASHIO_LIB_DIR}/env.sh"
 
 # ==============================================================================
 # Extended Modules
 # ==============================================================================
-modules="${__XBASHIO_LIB_DIR}/modules"
-if [ -d "${modules}" ]; then
-    for file in "${modules}"/*.sh; do
-        chmod +x "${file}"
-        source "${file}"
-    done
-fi
+# modules="${__XBASHIO_LIB_DIR}/modules"
+# if [ -d "${modules}" ]; then
+#     for file in "${modules}"/*.sh; do
+#         chmod +x "${file}"
+#         source "${file}"
+#     done
+# fi
 
 # ==============================================================================
 # Load environment variables
 # ==============================================================================
-xbashio::env.load
+# xbashio::env.load

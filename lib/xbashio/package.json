@@ -1,0 +1,37 @@
+{
+    "name": "@velvet-lab/xbashio",
+    "version": "0.1.0",
+    "description": "A Bats test helper library for testing Bash scripts",
+    "homepage": "",
+    "license": "MIT",
+    "author": "Velvet Lab",
+    "repository": "github:velvet-lab/xbashio",
+    "bugs": "",
+    "directories": {
+      "lib": "src",
+      "test": "tests"
+    },
+    "files":[
+      "load.bash",
+      "src"
+    ],
+    "devDependencies": {
+        "bats": "^1"
+    },
+    "peerDependencies": {
+        "typescript": "^5",
+        "bats": "^1"
+    },
+    "dependencies": {
+        "bats-assert": "^2.2.4",
+        "bats-support": "^0.3.0"
+    },
+    "keywords": [
+      "bats",
+      "bash",
+      "shell",
+      "test",
+      "unit",
+      "helper"
+    ]
+}
