@@ -1,8 +1,5 @@
 {
   "dependencies": {
-    "@velvet-lab/xbashio": "workspace:*"
-  },
-  "workspaces": [
-    "../../xbashio-core"
-  ]
+    "@velvet-lab/xbashio": "../../dist/velvet-lab-xbashio-0.1.0.tgz"
+  }
 }

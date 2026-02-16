@@ -3,26 +3,12 @@
   "workspaces": {
     "": {
       "dependencies": {
-        "@velvet-lab/xbashio": "workspace:*",
-      },
-    },
-    "../../xbashio-core": {
-      "name": "@velvet-lab/xbashio",
-      "version": "0.1.0",
-      "dependencies": {
-        "bats-assert": "^2.2.4",
-        "bats-support": "^0.3.0",
-      },
-      "devDependencies": {
-        "bats": "^1",
-      },
-      "peerDependencies": {
-        "bats": "^1",
+        "@velvet-lab/xbashio": "../../dist/velvet-lab-xbashio-0.1.0.tgz",
       },
     },
   },
   "packages": {
-    "@velvet-lab/xbashio": ["@velvet-lab/xbashio@workspace:../../xbashio-core"],
+    "@velvet-lab/xbashio": ["@velvet-lab/xbashio@../../dist/velvet-lab-xbashio-0.1.0.tgz", { "dependencies": { "bats-assert": "^2.2.4", "bats-support": "^0.3.0" }, "peerDependencies": { "bats": "^1" } }],
 
     "bats": ["bats@1.13.0", "", { "bin": { "bats": "bin/bats" } }, "sha512-giSYKGTOcPZyJDbfbTtzAedLcNWdjCLbXYU3/MwPnjyvDXzu6Dgw8d2M+8jHhZXSmsCMSQqCp+YBsJ603UO4vQ=="],
 
