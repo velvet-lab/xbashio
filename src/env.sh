@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # -*- coding: utf-8 -*-
 
+
+declare __XBASHIO_ENV_DIR="${__XBASHIO_VAR_DIR}"/environment
+
 # ------------------------------------------------------------------------------
 # Sets and saves environment variables
 #
@@ -19,46 +22,42 @@ xbashio::env.set() {
         return "${__XBASHIO_EXIT_NOK}"
     fi
 
+    if ! xbashio::fs.directory_exists "${__XBASHIO_ENV_DIR}"; then
+        mkdir -p "${__XBASHIO_ENV_DIR}"
+    fi
+
     xbashio::log.info "Set environment variable '${key}' to '${value}'"
     export "${key}"="${value}"
-    echo "${key}"="${value}" | tee -a "${__XBASHIO_ETC_DIR}"/environment
+    echo "${value}" > "${__XBASHIO_ENV_DIR}"/"${key}"
 
     return "${__XBASHIO_EXIT_OK}"
 }
 
 # ------------------------------------------------------------------------------
-# Exports saved environment variables
+# Loads each file in environment folder and exports it
 #
 # ------------------------------------------------------------------------------
-xbashio::env.export() {
+xbashio::env.load() {
     xbashio::log.trace "${FUNCNAME[0]}:"
 
-    xbashio::log.info "Export saved environment variables"
-    if [ -f "${__XBASHIO_ETC_DIR}"/environment ]; then
-        export $(xargs <"${__XBASHIO_ETC_DIR}"/environment)
+    if ! xbashio::fs.directory_exists "${__XBASHIO_ENV_DIR}"; then
+        return "${__XBASHIO_EXIT_OK}"
     fi
 
-    return "${__XBASHIO_EXIT_OK}"
-}
+    local file
+    for file in "${__XBASHIO_ENV_DIR}"/*; do
+        local key
+        local value
 
-# ------------------------------------------------------------------------------
-# Exports all variables for bash and zsh
-#
-# ------------------------------------------------------------------------------
-xbashio::env.configure() {
-    xbashio::log.trace "${FUNCNAME[0]}:"
+        [ -f "${file}" ] || continue
 
-    if [ -f "${__XBASHIO_ETC_DIR}"/environment ]; then
-        if [ -f "${HOME}"/.bashrc ]; then
-            xbashio::log.info "configure bash"
-            echo "export $(xargs <"${__XBASHIO_ETC_DIR}"/environment)" | tee -a "${HOME}"/.bashrc
+        key="$(basename "${file}")"
+        value="$(cat "${file}")"
+        if xbashio::var.is_empty "${value}"; then
+            xbashio::log.warn "Value for key '${key}' is empty"
         fi
-
-        if [ -f "${HOME}"/.zshrc ]; then
-            xbashio::log.info "configure zsh"
-            echo "export $(xargs <"${__XBASHIO_ETC_DIR}"/environment)" | tee -a "${HOME}"/.zshrc
-        fi
-    fi
+        export "${key}"="${value}"
+    done
 
     return "${__XBASHIO_EXIT_OK}"
 }

@@ -1,5 +1,3 @@
-
-
 $extensionsConfigFile = Join-Path -Path "~" -ChildPath ".devcontainer/devcontainer.json"
 $extensionsConfig = Get-Content -Path $extensionsConfigFile | ConvertFrom-Json
 $extensionsHome = Join-Path -Path "~" -ChildPath ".vscode-server/extensions"

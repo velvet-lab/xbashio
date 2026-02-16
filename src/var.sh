@@ -12,7 +12,7 @@ function xbashio::var.true() {
 
     xbashio::log.trace "${FUNCNAME[0]}:" "$@"
 
-    if [[ "${value}" = "true" ]]; then
+    if [[ "${value}" = "true" ]] || [[ "${value}" = 1 ]]; then
         return "${__XBASHIO_EXIT_OK}"
     fi
 
@@ -30,7 +30,7 @@ function xbashio::var.false() {
 
     xbashio::log.trace "${FUNCNAME[0]}:" "$@"
 
-    if [[ "${value}" = "false" ]]; then
+    if [[ "${value}" = "false" ]] || [[ "${value}" = 0 ]]; then
         return "${__XBASHIO_EXIT_OK}"
     fi
 
@@ -105,47 +105,4 @@ function xbashio::var.equals() {
     fi
 
     return "${__XBASHIO_EXIT_NOK}"
-}
-
-# ------------------------------------------------------------------------------
-# Creates JSON based on function arguments.
-#
-# Arguments:
-#   $@ Bash array of key/value pairs, prefix integer or boolean values with ^
-# ------------------------------------------------------------------------------
-function xbashio::var.json() {
-    local data=("$@");
-    local number_of_items=${#data[@]}
-    local json=''
-    local separator
-    local counter
-    local item
-
-    if [[ ${number_of_items} -eq 0 ]]; then
-        xbashio::log.error "Length of input array needs to be at least 2"
-        return "${__XBASHIO_EXIT_NOK}"
-    fi
-
-    if [[ $((number_of_items%2)) -eq 1 ]]; then
-        xbashio::log.error "Length of input array needs to be even (key/value pairs)"
-        return "${__XBASHIO_EXIT_NOK}"
-    fi
-
-    counter=0;
-    for i in "${data[@]}"; do
-        separator=","
-        if [ $((++counter%2)) -eq 0 ]; then
-            separator=":";
-        fi
-
-        item="\"$i\""
-        if [[ "${i:0:1}" == "^" ]]; then
-            item="${i:1}"
-        fi
-
-        json="$json$separator$item";
-    done
-
-    echo "{${json:1}}";
-    return "${__XBASHIO_EXIT_OK}"
 }

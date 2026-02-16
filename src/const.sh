@@ -3,11 +3,20 @@
 # shellcheck disable=SC2034,SC2004
 
 # Defaults
+__XBASHIO_DEFAULT_ETC_DIR="/etc/xbashio"
+__XBASHIO_DEFAULT_VAR_DIR="/var/lib/xbashio"
+__XBASHIO_USER_MODE=false
 readonly __XBASHIO_DEFAULT_CACHE_DIR="/tmp/.xbashio"
-readonly __XBASHIO_DEFAULT_ETC_DIR="/etc/xbashio"
 readonly __XBASHIO_DEFAULT_LOG_FORMAT="[{TIMESTAMP}] {LEVEL}: {MESSAGE}"
 readonly __XBASHIO_DEFAULT_LOG_LEVEL=5 # Defaults to INFO
 readonly __XBASHIO_DEFAULT_LOG_TIMESTAMP="%T"
+
+# Fallback to user directories if not running as root
+if [[ ${EUID:-$(id -u)} -ne 0 ]]; then
+    __XBASHIO_DEFAULT_ETC_DIR="${XDG_CONFIG_HOME:-${HOME:-}/.config}/xbashio"
+    __XBASHIO_DEFAULT_VAR_DIR="${XDG_DATA_HOME:-${HOME:-}/.local/share}/xbashio"
+    __XBASHIO_USER_MODE=true
+fi
 
 # Exit codes
 readonly __XBASHIO_EXIT_OK=0  # Successful termination

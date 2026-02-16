@@ -16,4 +16,3 @@ xbashio::software.getVersion() {
 
     return "${version}"
 }
-

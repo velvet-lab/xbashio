@@ -12,8 +12,7 @@ export __XBASHIO_LIB_DIR
 __XBASHIO_BIN=$(readlink -f "${BASH_SOURCE[0]}")
 __XBASHIO_LIB_DIR=$(dirname "${__XBASHIO_BIN}")
 
-# Include xBashIO library
-# shellcheck source=/workspaces/xbashio/src/xbashio/xbashio.sh
+# Include xbashio library
 source "${__XBASHIO_LIB_DIR}/xbashio.sh"
 
 # Execute source
