@@ -14,7 +14,7 @@ xbashio::node.install(){
 
     xbashio::log.info "Install global package '${packages}'"
     xbashio::env.export
-    npm install -g ${packages} || xbashio::exit.nok "Packages '$packages' could not installed"
+    npm install -g "${packages}" || xbashio::exit.nok "Packages '$packages' could not installed"
 
     return "${__XBASHIO_EXIT_OK}"
 }

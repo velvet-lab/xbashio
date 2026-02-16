@@ -36,10 +36,10 @@ xbashio::java.configureGradle() {
     rm -rf "${HOME}"/.m2
     mkdir -p "${HOME}"/.m2
 
-    if xbashio::var.has_value "${source_maven_config}"; then
+    if xbashio::var.has_value "${source_gradle_config}"; then
         xbashio::log.info "copy host configuration"
 
-        cp -f "${source_maven_config}" "${HOME}"/.m2/
+        cp -f "${source_gradle_config}" "${HOME}"/.m2/
     fi
 
     chown -R "${USER}":"${USER}" "${HOME}"/.m2

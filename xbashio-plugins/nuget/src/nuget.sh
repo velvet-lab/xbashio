@@ -20,7 +20,7 @@ xbashio::nuget.configure() {
     mkdir -p "${HOME}"/.dotnet/tools
     chown -R "${USER}":"${USER}" "${HOME}"/.dotnet
 
-    if xbashio::var.has_value "${source_npm_config}"; then
+    if xbashio::var.has_value "${source_nuget_config}"; then
         xbashio::log.info "copy host configuration"
 
         mkdir -p "$HOME"/.nuget/NuGet

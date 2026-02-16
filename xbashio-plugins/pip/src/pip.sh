@@ -16,7 +16,7 @@ xbashio::pip.configure(){
         xbashio::log.info "copy host configuration"
         rm -f "${HOME}"/.pip
         mkdir -p "${HOME}"/.pip
-        cp -f "${source_npm_config}" "${HOME}"/.pip/pip.conf
+        cp -f "${source_pip_config}" "${HOME}"/.pip/pip.conf
         chown -R "${USER}":"${USER}" "${HOME}"/.pip
     fi
 
