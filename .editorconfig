@@ -1,0 +1,59 @@
+# .editorconfig - xbashio project coding style configuration
+
+# Top-most EditorConfig file
+root = true
+
+# Universal defaults for all files
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+max_line_length = 100
+
+# Shell scripts (Bash)
+[*.{sh,bash}]
+indent_style = space
+indent_size = 2
+shell_variant = bash
+
+# Bats test files
+[*.bats]
+indent_style = space
+indent_size = 2
+
+# Markdown files
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off
+
+# JSON files
+[*.json]
+indent_style = space
+indent_size = 2
+
+# PowerShell files
+[*.ps1]
+indent_style = space
+indent_size = 2
+
+# Makefiles (if present)
+[Makefile]
+indent_style = tab
+indent_size = 4
+
+[{makefile,Makefile}*]
+indent_style = tab
+indent_size = 4
+
+# YAML files (if present)
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# Configuration files
+[{LICENSE,README,*.txt}]
+trim_trailing_whitespace = true
+insert_final_newline = true

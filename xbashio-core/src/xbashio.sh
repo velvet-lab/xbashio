@@ -17,7 +17,7 @@ export XBASHIO_VERSION="0.1.0"
 # shellcheck disable=SC2155
 readonly __XBASHIO_LIB_DIR=$(dirname "${BASH_SOURCE[0]}")
 
-# shellcheck source=./xbashio/src/const.sh
+# shellcheck source=./xbashio-core/src/const.sh
 source "${__XBASHIO_LIB_DIR}/const.sh"
 
 # Defaults
@@ -42,19 +42,19 @@ chmod -R 750 "${__XBASHIO_VAR_DIR}"
 # ==============================================================================
 # Main Modules
 # ==============================================================================
-# shellcheck source=./xbashio/src/color.sh
+# shellcheck source=./xbashio-core/src/color.sh
 source "${__XBASHIO_LIB_DIR}/color.sh"
-# shellcheck source=./xbashio/src/var.sh
+# shellcheck source=./xbashio-core/src/var.sh
 source "${__XBASHIO_LIB_DIR}/var.sh"
-# shellcheck source=./xbashio/src/fs.sh
+# shellcheck source=./xbashio-core/src/fs.sh
 source "${__XBASHIO_LIB_DIR}/fs.sh"
-# shellcheck source=./xbashio/src/log.sh
+# shellcheck source=./xbashio-core/src/log.sh
 source "${__XBASHIO_LIB_DIR}/log.sh"
-# shellcheck source=./xbashio/src/string.sh
+# shellcheck source=./xbashio-core/src/string.sh
 source "${__XBASHIO_LIB_DIR}/string.sh"
-# shellcheck source=./xbashio/src/exit.sh
+# shellcheck source=./xbashio-core/src/exit.sh
 source "${__XBASHIO_LIB_DIR}/exit.sh"
-# shellcheck source=./xbashio/src/env.sh
+# shellcheck source=./xbashio-core/src/env.sh
 source "${__XBASHIO_LIB_DIR}/env.sh"
 
 # ==============================================================================

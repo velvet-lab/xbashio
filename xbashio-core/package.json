@@ -1,7 +1,7 @@
 {
     "name": "@velvet-lab/xbashio",
     "version": "0.1.0",
-    "description": "A Bats test helper library for testing Bash scripts",
+    "description": "A bash function library for automation and testing.",
     "homepage": "",
     "license": "MIT",
     "author": "Velvet Lab",
@@ -12,14 +12,13 @@
       "test": "tests"
     },
     "files":[
-      "load.bash",
+      "xbashio.bash",
       "src"
     ],
     "devDependencies": {
         "bats": "^1"
     },
     "peerDependencies": {
-        "typescript": "^5",
         "bats": "^1"
     },
     "dependencies": {
