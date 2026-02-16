@@ -9,16 +9,10 @@
             "request": "launch",
             "name": "Debug bash",
             "cwd": "${workspaceFolder}",
-            "program": "src/xbashio/xbashio",
+            "program": "lib/xbashio/src/xbashio",
             "args": [
                 "${file}"
             ]
-        },
-        {
-            "name": "Debug javascript",
-            "program": "${file}",
-            "request": "launch",
-            "type": "node"
         }
     ]
 }
