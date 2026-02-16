@@ -1,9 +1,7 @@
 #!/usr/bin/env bats
 
 setup() {
-    load "$BATS_TEST_DIRNAME"/../node_modules/bats-support/load
-    load "$BATS_TEST_DIRNAME"/../node_modules/bats-assert/load
-    load "$BATS_TEST_DIRNAME"/../load
+    load "$BATS_TEST_DIRNAME"/../xbashio
 }
 
 @test "convert a string to lower case" {
