@@ -1,12 +1,6 @@
-# Build and packaging tasks for xbashio
-# Imported by main justfile
 
-# Build-specific settings can go here
-
-# === Build Recipes ===
-# Add build-related recipes here:
-# - build
-# - package
-# - install
-# - uninstall
-# - dist
+[private]
+build-with-bun:
+  just info "Building the project {{module_name}}..."
+  bun pm pack --destination {{dist_dir}}
+  just success "Build completed!"

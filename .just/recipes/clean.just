@@ -1,12 +1,6 @@
-# Cleanup tasks for xbashio
-# Imported by main justfile
 
-# Cleanup-specific settings can go here
-
-# === Cleanup Recipes ===
-# Add cleanup-related recipes here:
-# - clean
-# - clean-all
-# - clean-deps
-# - clean-cache
-# - clean-build
+[private]
+clean-dist:
+  just info "Cleaning build artifacts for module {{module_name}}..."
+  rm -rf {{dist_dir}}/*
+  just success "Clean completed!"

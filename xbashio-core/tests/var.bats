@@ -1,7 +1,7 @@
 #!/usr/bin/env bats
 
 setup() {
-    load "$BATS_TEST_DIRNAME"/../xbashio
+    load "$BATS_TEST_DIRNAME"/../load
 }
 
 @test "test that bool variable ist true" {
